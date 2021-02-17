@@ -1,0 +1,73 @@
+{
+  "kind": "collectionType",
+  "collectionName": "characters",
+  "info": {
+    "name": "character",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Alive",
+        "Extant",
+        "Deceased",
+        "Deactivated",
+        "Unknown",
+        "Other"
+      ],
+      "required": true
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "Male",
+        "Female",
+        "Unknown"
+      ],
+      "default": "Unknown",
+      "required": true
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "race": {
+      "model": "race"
+    },
+    "origin": {
+      "model": "place-of-origin"
+    },
+    "location": {
+      "model": "location"
+    },
+    "episodes": {
+      "collection": "episode",
+      "via": "characters"
+    },
+    "occupations": {
+      "collection": "occupation",
+      "via": "characters",
+      "dominant": true
+    }
+  }
+}

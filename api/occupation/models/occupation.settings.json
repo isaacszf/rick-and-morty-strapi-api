@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "occupations",
+  "info": {
+    "name": "occupation"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "characters": {
+      "via": "occupations",
+      "collection": "character"
+    }
+  }
+}
